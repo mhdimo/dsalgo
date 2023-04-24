@@ -58,3 +58,11 @@ int main(){
 
     return 0;
 }
+
+/*
+    complexity:
+    
+    best time: O(n * logn)
+    worst time: O(n^2)
+    average time: O(n * logn)
+*/

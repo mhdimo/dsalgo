@@ -50,3 +50,11 @@ int main(){
     printarr(a,10);
     return 0;
 }
+
+/*
+    complexity:
+
+    best time:O(n+k)
+    average time:O(n+k)
+    worst time:O(n+k)
+*/

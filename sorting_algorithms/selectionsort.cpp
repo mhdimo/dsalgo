@@ -7,7 +7,7 @@ void printarr(int a[], int b){
         cout<<a[i]<<" ";
     }
     cout<<endl;
-}
+}   
 
 void swap(int& a, int& b){
     int aux = a;
@@ -46,14 +46,9 @@ int main(){
 }
 
 /*
-    Complexity?
-    So:
-
+    Complexity:
+    
     Best Time: O( n^2)
     Worst Time: O(n^2)
     Average Time: O(n^2)
-
-    the complexity of this algorithm will be always O(n^2) no matter the input.
-    This is considered one of the worst algorithms to implement on a code but relatively simple to implement.
-    
 */

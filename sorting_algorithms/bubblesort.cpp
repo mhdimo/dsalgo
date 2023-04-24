@@ -43,11 +43,9 @@ int main(){
 
 
 /*
-    COMPLESSITA'?
+    Complexity:
     Best Time: O(n)
     Worst Time: O(n^2)
     Average Time: O(n^2)
-
-    This algorithm isn't any much better than selection sort but we can see, based on the input that
-    we can get a time of O(n), but the average and the worst time are the same as selection sort. 
+ 
 */
