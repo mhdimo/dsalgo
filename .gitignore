@@ -1,2 +1,7 @@
-.vscode/settings.json
+.vscode/*
 sorting_algorithms/countingsort
+sorting_algorithms/bubblesort
+sorting_algorithms/insertionsort
+sorting_algorithms/mergesort
+sorting_algorithms/selectionsort
+sorting_algorithms/quicksort
