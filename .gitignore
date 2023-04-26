@@ -5,3 +5,5 @@ sorting_algorithms/insertionsort
 sorting_algorithms/mergesort
 sorting_algorithms/selectionsort
 sorting_algorithms/quicksort
+search_algorithms/linearsearch
+search_algorithms/binarysearch
