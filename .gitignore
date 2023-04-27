@@ -8,3 +8,4 @@ sorting_algorithms/quicksort
 search_algorithms/linearsearch
 search_algorithms/binarysearch
 datastructures/simplelist
+datastructures/simplestack
