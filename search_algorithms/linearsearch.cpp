@@ -8,8 +8,7 @@ void printarray(int arr[], int n){
     
 }
 
-bool linearsearch(int array[], int n, int key)
-{
+bool linearsearch(int array[], int n, int key){
     for (int i = 0; i < n; i++){
         if (array[i] == key){
             return true;
@@ -27,7 +26,7 @@ int main(){
     printarray(arr,10);
     
     cout << "]"<< endl;
-    
+     
     int key;
     
     cout<<"Insert the key you want to find on the array: ";
