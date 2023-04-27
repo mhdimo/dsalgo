@@ -5,7 +5,6 @@ void printarray(int arr[], int n){
     for (int i = 0; i < n; i++){
         cout<<arr[i]<<" ";
     }
-    
 }
 
 bool linearsearch(int array[], int n, int key){
@@ -38,5 +37,4 @@ int main(){
     if (x){
         cout << "Found "<<key<<" in the array"<<endl;
     }
-
 }
