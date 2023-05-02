@@ -7,5 +7,7 @@ sorting_algorithms/selectionsort
 sorting_algorithms/quicksort
 search_algorithms/linearsearch
 search_algorithms/binarysearch
-datastructures/simplelist
-datastructures/simplestack
+datastructures/list/list
+datasatructures/list/simplelist
+datastructures/stack/simplestack
+datastructures/stack/stack
