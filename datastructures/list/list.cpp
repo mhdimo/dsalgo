@@ -37,7 +37,7 @@ class LinkedList{
 
         //loop over the list to find a element
         //returns true if found
-        bool searc(T value){
+        bool search(T value){
             Node<T>* temp = Head;
             while (temp != nullptr){
                 if (temp->data == value){
@@ -80,6 +80,7 @@ class LinkedList{
             cout<< endl;
         }
 };
+
 
 int main(){
 
