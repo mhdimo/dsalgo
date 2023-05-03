@@ -9,6 +9,5 @@ search_algorithms/linearsearch
 search_algorithms/binarysearch
 datastructures/list/list
 datasatructures/list/simplelist
-/datastructures/list/doublelinkedlist
-datastructures/stack/simplestack
-datastructures/stack/stack
+datastructures/list/doublelinkedlist
+datastructures/graphs/heap
