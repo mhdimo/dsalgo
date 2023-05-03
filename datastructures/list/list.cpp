@@ -6,11 +6,11 @@ template <class T>
 class Node {
     public:
         int data;
-        Node<T>* next = nullptr;
+        Node<T>* Next = nullptr;
 
-        Node(T value):data(value),next(nullptr){}
+        Node(T value):data(value),Next(nullptr){}
 
-        Node(T value, Node* TemporaryNext):data(value),next(TemporaryNext){}
+        Node(T value, Node* TemporaryNext):data(value),Next(TemporaryNext){}
 };
 
 template <class T>
@@ -30,7 +30,7 @@ class LinkedList{
             if (Head == nullptr) {
                 Head = new_node;
                 }else{
-                    new_node->next = Head;
+                    new_node->Next = Head;
                     Head = new_node;
             }
         }
@@ -43,7 +43,7 @@ class LinkedList{
                 if (temp->data == value){
                     return true;
                 }
-                temp = temp->next;
+                temp = temp->Next;
             }
             return -1;
         }
@@ -52,21 +52,21 @@ class LinkedList{
             Node<T>* temp = Head;
 
             if(temp != nullptr && temp->data == value){
-                Head = temp->next;
+                Head = temp->Next;
                 delete temp;
                 return;
             }else{//else loop over the list and search for the node to delete.
                 Node<T>* current = Head;
                 while(temp != nullptr && temp->data != value){
                     current = temp;
-                    temp = temp->next;
+                    temp = temp->Next;
                 }
                 // if the value is not found in the linked list
                 if(!temp){
                     cout<<"Value not found\n";
                     return;
                 }
-                current->nexxt = temp->next;
+                current->nexxt = temp->Next;
                 delete temp;
             }
         }
@@ -75,10 +75,28 @@ class LinkedList{
             Node<T>* temp = Head;
             while(temp != nullptr){
                 cout<<"temp->data: "<<temp->data<<endl;
-                temp = temp->next; 
+                temp = temp->Next; 
             } 
             cout<< endl;
         }
+
+        void reverse(){
+            Node<T>* Current = Head;
+            Node<T>* Previous = NULL;
+            Node<T>* Next = NULL;
+
+            while (Current != NULL){
+                //store next.
+                Next = Current->Next;
+                //reverse current's Node pointer.
+                Current->Next = Previous;
+                // Move pointer one position ahead;
+                Previous = Current;
+                Current = Next;
+            }
+            Head = Previous;
+        }
+
 };
 
 
@@ -92,6 +110,9 @@ int main(){
     l.insert(3);
     l.insert(7);
     //using void display()
-    cout<<"Current Linked List: "<<endl;
+    cout<<"Current Linked List before reverse: \n";
+    l.display();
+    cout<<"\nCurrent Linked List after reverse: \n";
+    l.reverse();
     l.display();
 }
