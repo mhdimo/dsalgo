@@ -7,10 +7,11 @@ class Node {
     public:
         int data;
         Node<T>* Next = NULL;
+        Node<T>* Previous = NULL;
 
-        Node(T value):data(value),Next(NULL){}
+        Node(T value):data(value),Next(NULL), Previous(NULL){}
 
-        Node(T value, Node<T>* TemporaryNext):data(value),Next(TemporaryNext){}
+        Node(T value, Node<T>* TemporaryNext, Node<T>* TemporaryPrevious):data(value),Next(TemporaryNext),Previous(TemporaryPrevious){}
 };
 
 template <class T>
@@ -30,9 +31,16 @@ class LinkedList{
             //If list is empty make the head as a new node
             if (Head == NULL) {
                 Head = new_node;
+                Tail = new_node;
                 }else{
-                    new_node->Next = Head;
-                    Head = new_node;
+                    
+                    new_node->Next = NULL;
+                    new_node->Previous = Tail;
+                    //Set the Next pointer of the current last node to the new node 
+                    Tail->Next = new_node;
+
+                    //Set the new node as the new Tail of the list
+                    Tail = new_node;
             }
         }
 
@@ -44,8 +52,16 @@ class LinkedList{
             //If list is empty make the head as a new node
             if(Head == NULL){
                 Head = new_node;
+                Tail = new_node;
             }else{
+                //Set the Next and Previous pointers of the new node.
                 new_node->Next = Head;
+                new_node->Previous = NULL;
+
+                //Set the Previous pointer of the current first node to the new node.
+                Head->Previous = new_node;
+
+                //Set the new node as the new Head of the List
                 Head = new_node;
             }
         }
@@ -68,48 +84,65 @@ class LinkedList{
 
             if(temp != NULL && temp->data == value){
                 Head = temp->Next;
+                if(Head != NULL){
+                    Head->Previous = NULL;
+                }
                 delete temp;
                 return;
             }else{//else loop over the list and search for the node to delete.
-                Node<T>* current = Head;
                 while(temp != NULL && temp->data != value){
-                    current = temp;
-                    temp = temp->Next;
+                    temp= temp->Next;
                 }
                 // if the value is not found in the linked list
                 if(!temp){
                     cout<<"Value not found\n";
                     return;
                 }
-                current->Next = temp->Next;
+                temp->Previous->Next = temp->Next;
+                if(temp->Next){
+                    temp->Next->Previous = temp->Previous;
+                }
+                
                 delete temp;
+                return;
             }
         }
 
         void display(){
             Node<T>* temp = Head;
             while(temp != NULL){
-                cout<<"Node->data: "<<temp->data<<endl;
+                cout<<"Node->data: "<<temp->data<<", ";
+                if(temp->Previous == NULL){
+                    cout<< "left: NULL ";
+                }else{    
+                    cout<<"left: "<< temp->Previous<<", ";
+                }
+                if(temp->Next == NULL){
+                    cout<<"right: NULL ";
+                }else{
+                    cout<<"right: "<<temp->Next;
+                }
+                cout<<endl;
                 temp = temp->Next; 
-            } 
+            }
             cout<< endl;
         }
 
         void reverse(){
             Node<T>* Current = Head;
-            Node<T>* Previous = NULL;
-            Node<T>* Next = NULL;
+            Node<T>* temp = NULL;
 
             while (Current != NULL){
-                //store next.
-                Next = Current->Next;
+                //store next & Previous node.
                 //reverse current's Node pointer.
-                Current->Next = Previous;
-                // Move pointer one position ahead;
-                Previous = Current;
-                Current = Next;
+                temp = Current->Previous;
+                Current->Previous = Current->Next;
+                Current->Next = temp;
+                // Move pointer one to the next Node;
+                Current = Current->Previous;
             }
-            Head = Previous;
+            // Set the head to last node (which is the original tail).
+            Head = temp->Previous;
         }
 };
 
