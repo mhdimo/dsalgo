@@ -3,7 +3,7 @@
 
 using namespace std;
 template <class T>
-class Node {
+class Node{
     public:
         int data;
         Node<T>* Next = NULL;
@@ -110,17 +110,18 @@ class LinkedList{
 
         void display(){
             Node<T>* temp = Head;
+
             while(temp != NULL){
                 cout<<"Node->data: "<<temp->data<<", ";
                 if(temp->Previous == NULL){
                     cout<< "left: NULL ";
-                }else{    
-                    cout<<"left: "<< temp->Previous<<", ";
+                }else{
+                    cout<<"left: "<< temp->Previous->data <<", ";
                 }
                 if(temp->Next == NULL){
                     cout<<"right: NULL ";
                 }else{
-                    cout<<"right: "<<temp->Next;
+                    cout<<"right: "<<temp->Next->data;
                 }
                 cout<<endl;
                 temp = temp->Next; 
