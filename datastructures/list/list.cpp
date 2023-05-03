@@ -22,7 +22,7 @@ class LinkedList{
         LinkedList():Head(nullptr){}
 
         //function for inserting element at the start of the list.
-        void insert(T value){
+        void push_back(T value){
             //start with making a new node.
             Node<T>* new_node = new Node<T>(value);
 
@@ -104,11 +104,11 @@ int main(){
 
     LinkedList<int> l;
     //Inserting elements
-    l.insert(6);
-    l.insert(9);
-    l.insert(1);
-    l.insert(3);
-    l.insert(7);
+    l.push_back(6);
+    l.push_back(9);
+    l.push_back(1);
+    l.push_back(3);
+    l.push_back(7);
     //using void display()
     cout<<"Current Linked List before reverse: \n";
     l.display();
