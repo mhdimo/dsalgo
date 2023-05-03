@@ -6,9 +6,9 @@ template <class T>
 class Node {
     public:
         int data;
-        Node<T>* Next = nullptr;
+        Node<T>* Next = NULL;
 
-        Node(T value):data(value),Next(nullptr){}
+        Node(T value):data(value),Next(NULL){}
 
         Node(T value, Node* TemporaryNext):data(value),Next(TemporaryNext){}
 };
@@ -17,9 +17,10 @@ template <class T>
 class LinkedList{
     private:
         Node<T>* Head;
+        Node<T>* Tail;
     public:
-        //default constructor. We initialize the head with a nullptr.
-        LinkedList():Head(nullptr){}
+        //default constructor. We initialize the head with a NULL.
+        LinkedList():Head(NULL){}
 
         //function for inserting element at the start of the list.
         void push_back(T value){
@@ -27,7 +28,7 @@ class LinkedList{
             Node<T>* new_node = new Node<T>(value);
 
             //If list is empty make the head as a new node
-            if (Head == nullptr) {
+            if (Head == NULL) {
                 Head = new_node;
                 }else{
                     new_node->Next = Head;
@@ -35,11 +36,25 @@ class LinkedList{
             }
         }
 
+        //function for inserting element at the end of the list
+        void push_front(T value){
+            //start with making a new node.
+            Node<T>* new_node = new Node<T>(value);
+
+            //If list is empty make the head as a new node
+            if(Head == NULL){
+                Head = new_node;
+            }else{
+                new_node->Next = Head;
+                Head = new_node;
+            }
+        }
+
         //loop over the list to find a element
         //returns true if found
         bool search(T value){
             Node<T>* temp = Head;
-            while (temp != nullptr){
+            while (temp != NULL){
                 if (temp->data == value){
                     return true;
                 }
@@ -51,13 +66,13 @@ class LinkedList{
         void remove(T value){
             Node<T>* temp = Head;
 
-            if(temp != nullptr && temp->data == value){
+            if(temp != NULL && temp->data == value){
                 Head = temp->Next;
                 delete temp;
                 return;
             }else{//else loop over the list and search for the node to delete.
                 Node<T>* current = Head;
-                while(temp != nullptr && temp->data != value){
+                while(temp != NULL && temp->data != value){
                     current = temp;
                     temp = temp->Next;
                 }
@@ -73,7 +88,7 @@ class LinkedList{
 
         void display(){
             Node<T>* temp = Head;
-            while(temp != nullptr){
+            while(temp != NULL){
                 cout<<"temp->data: "<<temp->data<<endl;
                 temp = temp->Next; 
             } 
@@ -112,7 +127,7 @@ int main(){
     //using void display()
     cout<<"Current Linked List before reverse: \n";
     l.display();
-    cout<<"\nCurrent Linked List after reverse: \n";
-    l.reverse();
+    cout<<"\nAdd element at the front: \n";
+    l.push_front(10);
     l.display();
 }
