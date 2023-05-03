@@ -81,7 +81,7 @@ class LinkedList{
                     cout<<"Value not found\n";
                     return;
                 }
-                current->nexxt = temp->Next;
+                current->Next = temp->Next;
                 delete temp;
             }
         }
@@ -126,7 +126,14 @@ int main(){
     //using void display()
     cout<<"Current Linked List before reverse: \n";
     l.display();
-    cout<<"\nAdd element at the front: \n";
+    cout<<"\nAdd element 10 at the front: \n";
     l.push_front(10);
     l.display();
+    l.reverse();
+    cout<<"\nReversed Linked list: \n";
+    l.display();
+    l.remove(10);
+    cout<<"\nRemoving 10 from linked list: \n";
+    l.display();
+    
 }
