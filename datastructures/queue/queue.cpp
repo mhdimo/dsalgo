@@ -49,8 +49,8 @@ class Stack {
             //Deletion of the head and assign it to the next node
             Node<Q>* tmp = Head;
             Head = Head->Next;
-            if (Head == nullptr) {
-                Tail = nullptr; // if the queue becomes empty after dequeueing, set tail to null
+            if (Head == NULL) {
+                Tail = NULL; // if the queue becomes empty after dequeueing, set tail to null
             }
             delete tmp;
 

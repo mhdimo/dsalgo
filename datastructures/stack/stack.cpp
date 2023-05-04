@@ -40,7 +40,7 @@ class Stack {
 
         //function for removing the last element inserted at the head
         S Pop(){
-            if (this->Head == nullptr){ // check if stack is empty
+            if (this->Head == NULL){ // check if stack is empty
                 cerr<<"Pop(): stack is empty.\n";
                 return -1;
             }

@@ -2,7 +2,7 @@
 
 struct node {
     int data;
-    node* next= nullptr;
+    node* next = NULL;
 };
 
 int main(){
