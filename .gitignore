@@ -10,4 +10,6 @@ search_algorithms/binarysearch
 datastructures/list/list
 datasatructures/list/simplelist
 datastructures/list/doublelinkedlist
+datastructures/stack/stack
+datastructures/queue/queue
 datastructures/graphs/heap

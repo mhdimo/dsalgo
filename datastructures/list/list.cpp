@@ -5,7 +5,7 @@ using namespace std;
 template <class T>
 class Node {
     public:
-        int data;
+        T data;
         Node<T>* Next = NULL;
 
         Node(T value):data(value),Next(NULL){}
@@ -19,10 +19,10 @@ class LinkedList{
         Node<T>* Head;
         Node<T>* Tail;
     public:
-        //default constructor. We initialize the head with a NULL.
-        LinkedList():Head(NULL){}
+        //default constructor. We initialize the head/Tail with a NULL.
+        LinkedList():Head(NULL),Tail(NULL){}
 
-        //function for inserting element at the start of the list.
+        //function for inserting element at the head of the list.
         void push_back(T value){
             //start with making a new node.
             Node<T>* new_node = new Node<T>(value);
