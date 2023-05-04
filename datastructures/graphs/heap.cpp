@@ -8,8 +8,8 @@ class Heap {
         H Heap_size;
         H* Heap_array;
 
-        inline H Left(H i){return i << 1;}
-        inline H Right(H i){return (i <<1)|1;}
+        inline H Left(H i){return (i << 1)+1;}
+        inline H Right(H i){return (i << 1)+2;}
         inline H Parent(H i){return i >> 1;}
     public:
 		Heap(H hs = 100):Size(hs){
@@ -99,7 +99,7 @@ class Heap {
 
         void ShowHeap (Heap<H>* h){
         	for (int i = 0; i < h->Heap_size; i++){
-        		cout << h->Heap_array[i] << " ";
+        		cout << h->Heap_array[i] << " Left(i)="<<h->Heap_array[Left(i)]<<", Right(i)="<<h->Heap_array[Right(i)]<<endl;
             }
             cout<<endl;
         }
