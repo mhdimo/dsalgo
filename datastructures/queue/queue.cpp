@@ -3,31 +3,31 @@
 
 using namespace std;
 
-template<class S>
+template<class Q>
 class Node {
     public:
-        S data;
-        Node<S>* Next = NULL;
+        Q data;
+        Node<Q>* Next = NULL;
 
-        Node(S value):data(value),Next(NULL){}
+        Node(Q value):data(value),Next(NULL){}
 
-        Node(S value, Node<S>* TemporaryNext):data(value),Next(TemporaryNext){}
+        Node(Q value, Node<Q>* TemporaryNext):data(value),Next(TemporaryNext){}
 };
 
-template<class S>
+template<class Q>
 class Stack {
     private:
-        Node<S>* Head;
-        Node<S>* Tail;
+        Node<Q>* Head;
+        Node<Q>* Tail;
 
     public:
         //default constructor. We initialize the head/Tail with a NULL.
         Stack():Head(NULL),Tail(NULL){}
 
         //function for inserting element at the head of the list.
-        void push_back(S value){
+        void push_back(Q value){
             //start with making a new node.
-            Node<S>* new_node = new Node<S>(value);
+            Node<Q>* new_node = new Node<Q>(value);
 
             //If list is empty make the head as a new node
             if (Head == NULL) {
@@ -39,31 +39,34 @@ class Stack {
         }
 
         //function for removing the last element inserted at the head
-        S Pop(){
-            if (this->Head == nullptr){ // check if stack is empty
-                cerr<<"Pop(): stack is empty.\n";
+        Q Dequeue(){
+            if (this->Head == NULL && this->Tail == NULL){ // check if stack is empty
+                cerr<<"Dequeue(): stack is empty.\n";
                 return -1;
             }
             //PopValue gets the data of the head so we can return it
-            S PopValue = this->Head->data;
+            Q DequeueValue= this->Head->data;
             //Deletion of the head and assign it to the next node
-            Node<S>* tmp = Head;
+            Node<Q>* tmp = Head;
             Head = Head->Next;
+            if (Head == nullptr) {
+                Tail = nullptr; // if the queue becomes empty after dequeueing, set tail to null
+            }
             delete tmp;
 
-            return PopValue;
+            return DequeueValue;
         }
 
         //Function for removing a specific value from the stack.
-        void remove(S value){
-            Node<S>* temp = Head;
+        void remove(Q value){
+            Node<Q>* temp = Head;
 
             if(temp != NULL && temp->data == value){
                 Head = temp->Next;
                 delete temp;
                 return;
             }else{//else loop over the list and search for the node to delete.
-                Node<S>* current = Head;
+                Node<Q>* current = Head;
                 while(temp != NULL && temp->data != value){
                     current = temp;
                     temp = temp->Next;
@@ -89,7 +92,7 @@ class Stack {
         }
 
         void display(){
-            Node<S>* temp = Head;
+            Node<Q>* temp = Head;
             while(temp != NULL){
                 cout<<"Node->data: "<<temp->data<<endl;
                 temp = temp->Next; 
@@ -98,9 +101,9 @@ class Stack {
         }
 
         void reverse(){
-            Node<S>* Current = Head;
-            Node<S>* Previous = NULL;
-            Node<S>* Next = NULL;
+            Node<Q>* Current = Head;
+            Node<Q>* Previous = NULL;
+            Node<Q>* Next = NULL;
 
             while (Current != NULL){
                 //store next.
@@ -115,10 +118,10 @@ class Stack {
         }
 
         ~Stack(){
-            Node<S>* iter = this->Head;
+            Node<Q>* iter = this->Head;
 
             while (iter){
-                Node<S>* tmp = iter->Next;
+                Node<Q>* tmp = iter->Next;
                 delete iter;
                 iter = tmp;
             }
@@ -137,20 +140,20 @@ int main(){
     S.push_back(3);
     S.push_back(7);
     //using void display()
-    cout<<"Current Linked List before reverse: \n";
+    cout<<"Current Queue before reverse: \n";
     S.display();
     cout<<"\nAdd element 10 at the front: \n";
     S.push_back(10);
     S.display();
     S.reverse();
-    cout<<"\nReversed Linked list: \n";
+    cout<<"\nReversed Linked Queue: \n";
     S.display();
     S.remove(10);
-    cout<<"\nRemoving 10 from linked list: \n";
+    cout<<"\nRemoving 10 from Queue: \n";
     S.display();
     cout<<"\nPop(): ";
-    int spop;
-    spop = S.Pop();
-    cout<<spop<<"\n";
+    int sdequeue;
+    sdequeue = S.Dequeue();
+    cout<<sdequeue<<"\n";
     S.display();
 }
