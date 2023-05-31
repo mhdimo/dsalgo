@@ -7,6 +7,7 @@ class Node{
         T data;
         Node<T>* left;
         Node<T>* right;
+        Node() : left(nullptr), right(nullptr) {}
 };
 
 template<class T>
@@ -98,9 +99,9 @@ class BST {
             if(t == NULL){
                 return NULL;
             }else if(x < t->data){
-                return find(t->left, x);
+                return Find(t->left, x);
             }else if(x > t->data){
-                return find(t->right, x);
+                return Find(t->right, x);
             }else{
                 return t;
             }
@@ -124,8 +125,8 @@ class BST {
                 cout << endl;
             }
 
-            void Search(int x) {
-                root = Find(root, x);
+            Node<T>* Search(int x) {
+                return Find(root, x);
             }
 
 
@@ -145,6 +146,21 @@ int main() {
     t.Remove(25);
     t.Display();
     t.Remove(30);
+    cout<<"final tree shown:\n";
     t.Display();
+    cout<<"add more numbers:\n";
+    t.Insert(13);
+    t.Insert(19);
+    t.Insert(34);
+    t.Insert(11);
+    t.Display();
+    auto val = t.Search(30);
+    cout<<"let's try to find 34\n";
+    if (val!=0){
+        cout<<"found\n";
+    }else{
+        cout<<"not found\n";
+    }
+    
     return 0; 
 }
