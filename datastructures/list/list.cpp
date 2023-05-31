@@ -132,8 +132,8 @@ int main(){
     l.reverse();
     cout<<"\nReversed Linked list: \n";
     l.display();
-    l.remove(10);
     cout<<"\nRemoving 10 from linked list: \n";
+    l.remove(10);
     l.display();
     
 }
