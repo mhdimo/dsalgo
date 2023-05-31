@@ -6,8 +6,8 @@ template <class T>
 class Node{
     public:
         int data;
-        Node<T>* Next = NULL;
-        Node<T>* Previous = NULL;
+        Node<T>* Next;
+        Node<T>* Previous;
 
         Node(T value):data(value),Next(NULL), Previous(NULL){}
 
