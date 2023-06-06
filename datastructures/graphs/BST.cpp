@@ -86,7 +86,7 @@ class BST {
             return t;
         }
 
-        void InOrder(Node<T>* t){
+        void InOrder(Node<T>* t) {
             if(t == NULL){
                 return;
             }
@@ -95,16 +95,44 @@ class BST {
             InOrder(t->right);
         }
 
-        Node<T>* Find(Node<T>* t, int x) {
+        void PreOrder(Node<T>* t) {
             if(t == NULL){
-                return NULL;
-            }else if(x < t->data){
-                return Find(t->left, x);
-            }else if(x > t->data){
-                return Find(t->right, x);
-            }else{
-                return t;
+                return;
             }
+            cout<<t->data<<" ";
+            PreOrder(t->left);
+            PreOrder(t->right);
+        }
+
+        void PostOrder(Node<T>* t) {
+            if(t == NULL){
+                return;
+            }
+            PostOrder(t->left);
+            PostOrder(t->right);
+            cout<<t->data<<"";
+        }
+
+        void Display(Node<T>* t) {
+            if(t == NULL){
+                return;
+            }
+            Display(t->left);
+            cout << t->data << " ";
+            Display(t->right);
+        }
+
+        Node<T>* Find(Node<T>* t, int x) {
+            while (t != NULL) {
+                if (x < t->data) {
+                    t = t->left;
+                } else if (x > t->data) {
+                    t = t->right;
+                } else {
+                    return t;  // Elemento trovato
+                }
+            }
+            return NULL;  // Elemento non trovato
         }
 
         public:
@@ -120,13 +148,32 @@ class BST {
                 root = Remove(x, root);
             }
 
-            void Display() {
+            void InOrder() {
                 InOrder(root);
                 cout << endl;
             }
 
-            Node<T>* Search(int x) {
-                return Find(root, x);
+            void PostOrder() {
+                PostOrder(root);
+                cout << endl;
+            }
+
+            void PreOrder() {
+                PreOrder(root);
+                cout << endl;
+            }
+
+            void Display() {
+                Display(root);
+                cout<<endl;
+            }
+
+            T Search(T x) {
+                Node<T>* foundNode = Find(root, x);
+                if (foundNode != nullptr) {
+                    return foundNode->data;  // Restituisce il valore del nodo trovato
+                }
+                return T();  // Restituisce un valore di default se l'elemento non è presente
             }
 
 
@@ -135,32 +182,36 @@ class BST {
 
 int main() {
     BST<int> t;
+
+    cout<<"BST Example:"<<endl;
     t.Insert(20);
     t.Insert(25);
     t.Insert(15);
     t.Insert(10);
     t.Insert(30);
+
+    cout<<"PreOrder:"<<endl;
+    t.PreOrder();
+    cout<<"PostOrder:"<<endl;
+    t.PostOrder();
+    cout<<"Inorder:"<<endl;
+    t.InOrder();
+
+    cout<<"\nAdd more data and do Find and deletion:";
+    t.Insert(23);
+    t.Insert(54);
+    t.Insert(22);
+    t.Insert(67);
+    t.Insert(45);
+
+    cout<<"\nDelete 67:\n";
+    t.Remove(67);
     t.Display();
-    t.Remove(20);
+    cout<<"\nDelete 25:\n";
     t.Display();
-    t.Remove(25);
-    t.Display();
-    t.Remove(30);
-    cout<<"final tree shown:\n";
-    t.Display();
-    cout<<"add more numbers:\n";
-    t.Insert(13);
-    t.Insert(19);
-    t.Insert(34);
-    t.Insert(11);
-    t.Display();
-    auto val = t.Search(30);
-    cout<<"let's try to find 34\n";
-    if (val!=0){
-        cout<<"found\n";
-    }else{
-        cout<<"not found\n";
-    }
-    
-    return 0; 
+    cout<<"\nFind 20, if the number is in the tree it will return the same number:\n";
+    cout<<t.Search(20);
+
+
+    return 0;
 }
