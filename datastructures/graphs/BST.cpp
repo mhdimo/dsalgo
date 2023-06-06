@@ -86,6 +86,19 @@ class BST {
             return t;
         }
 
+        Node<T>* Find(Node<T>* t, int x) {
+            while (t != NULL) {
+                if (x < t->data) {
+                    t = t->left;
+                } else if (x > t->data) {
+                    t = t->right;
+                } else {
+                    return t;  // Elemento trovato
+                }
+            }
+            return NULL;  // Elemento non trovato
+        }        
+
         void InOrder(Node<T>* t) {
             if(t == NULL){
                 return;
@@ -122,17 +135,16 @@ class BST {
             Display(t->right);
         }
 
-        Node<T>* Find(Node<T>* t, int x) {
-            while (t != NULL) {
-                if (x < t->data) {
-                    t = t->left;
-                } else if (x > t->data) {
-                    t = t->right;
-                } else {
-                    return t;  // Elemento trovato
-                }
+        int Height(Node<T>* t){
+            if(t == NULL){
+                return 0; //l'altezza di un albero vuoto e' 0
             }
-            return NULL;  // Elemento non trovato
+
+            int LeftHeight = Height(t->left);
+            int RightHeight = Height(t->right);
+            // L'altezza dell'albero è l'altezza massima tra il sottoalbero sinistro e destro,
+            // incrementata di 1 per tener conto del nodo corrente.
+            return max(LeftHeight, RightHeight) +1;
         }
 
         public:
@@ -146,7 +158,12 @@ class BST {
 
             void Remove(int x) {
                 root = Remove(x, root);
-            }
+            }     
+
+            int Height(){
+                return Height(root);
+                cout << endl;
+            }      
 
             void InOrder() {
                 InOrder(root);
@@ -165,7 +182,7 @@ class BST {
 
             void Display() {
                 Display(root);
-                cout<<endl;
+                cout << endl;
             }
 
             T Search(T x) {
@@ -209,8 +226,10 @@ int main() {
     t.Display();
     cout<<"\nDelete 25:\n";
     t.Display();
-    cout<<"\nFind 20, if the number is in the tree it will return the same number:\n";
-    cout<<t.Search(20);
+    int searchval = 100;
+    cout<<"\nFind "<<searchval<<", if the number is in the tree it will return the same number:\n";
+    cout<<t.Search(searchval);
+    cout<<"\nAltezza dell'albero: " << t.Height() << endl;
 
 
     return 0;
