@@ -110,12 +110,12 @@ int main () {
 	cout << "Heap in C++" << endl;
 	Heap<int> hp;
 	
-	hp.Insert(16); // ShowHeap(&hp);
-	hp.Insert(7);  // ShowHeap(&hp);
-	hp.Insert(14); // ShowHeap(&hp);
-	hp.Insert(9);  // ShowHeap(&hp);
-	hp.Insert(1);  // ShowHeap(&hp);
-	hp.Insert(8);  // ShowHeap(&hp);
+	hp.Insert(16);
+	hp.Insert(7); 
+	hp.Insert(14);
+	hp.Insert(9); 
+	hp.Insert(1); 
+	hp.Insert(8); 
 	hp.Insert(10);
 	hp.Insert(3);
 	hp.Insert(2);
