@@ -7,7 +7,7 @@ class Node{
         T data;
         Node<T>* left;
         Node<T>* right;
-        Node() : left(nullptr), right(nullptr) {}
+        Node() : left(NULL), right(NULL) {}
 };
 
 template<class T>
@@ -123,7 +123,7 @@ class BST {
             }
             PostOrder(t->left);
             PostOrder(t->right);
-            cout<<t->data<<"";
+            cout<<t->data<<" ";
         }
 
         void Display(Node<T>* t) {
@@ -135,7 +135,7 @@ class BST {
             Display(t->right);
         }
 
-        int Height(Node<T>* t){
+        int Height(Node<T>* t) {
             if(t == NULL){
                 return 0; //l'altezza di un albero vuoto e' 0
             }
@@ -185,9 +185,25 @@ class BST {
                 cout << endl;
             }
 
+            T Max() {
+                Node<T>* maxNode = FindMax(root);
+                if (maxNode != nullptr) {
+                    return maxNode->data;
+                }
+                return T();  // Restituisce un valore di default se l'albero è vuoto
+            }
+
+            T Min() {
+                Node<T>* minNode = FindMin(root);
+                if (minNode != nullptr) {
+                    return minNode->data;
+                }
+                return T();  // Restituisce un valore di default se l'albero è vuoto
+            }
+
             T Search(T x) {
                 Node<T>* foundNode = Find(root, x);
-                if (foundNode != nullptr) {
+                if (foundNode != NULL) {
                     return foundNode->data;  // Restituisce il valore del nodo trovato
                 }
                 return T();  // Restituisce un valore di default se l'elemento non è presente
@@ -226,11 +242,13 @@ int main() {
     t.Display();
     cout<<"\nDelete 25:\n";
     t.Display();
-    int searchval = 100;
+    int searchval = 20;
     cout<<"\nFind "<<searchval<<", if the number is in the tree it will return the same number:\n";
     cout<<t.Search(searchval);
     cout<<"\nAltezza dell'albero: " << t.Height() << endl;
 
+    cout<<"Max elemento dell'albero: " << t.Max() <<endl;
+    cout<<"Min elemento dell'albero: " << t.Min() <<endl;
 
     return 0;
 }
