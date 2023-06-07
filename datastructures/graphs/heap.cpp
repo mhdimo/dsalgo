@@ -21,7 +21,7 @@ class Heap {
             delete [] Heap_array;
         }
 
-        void exchange(H& n, H& m){
+        void exchange(H& n, H& m) {
             H Temp;
             Temp = n;
             n = m;
@@ -29,7 +29,7 @@ class Heap {
             return;
         }
 
-        void Insert(H e){
+        void Insert(H e) {
             H i;
             H parent_i;
 
@@ -50,7 +50,7 @@ class Heap {
             return;
         }
 
-        H Maximum(){
+        H Maximum() {
             if(Heap_size > 0) {
                 return Heap_array[0];
             } else {
@@ -58,7 +58,7 @@ class Heap {
             }
         }
 
-        void Heapify(H i){
+        void Heapify(H i) {
             H Largest;
             H Left_i; 
             H Right_i;
@@ -86,7 +86,7 @@ class Heap {
 	        }
         }
 
-        void ExtractMaximum(){
+        void ExtractMaximum() {
         	if (Heap_size > 0) {
         		Heap_array[0] = Heap_array[Heap_size-1];
         		Heap_size--;
@@ -97,7 +97,7 @@ class Heap {
             }
         }
 
-        void ShowHeap (Heap<H>* h){
+        void ShowHeap (Heap<H>* h) {
         	for (int i = 0; i < h->Heap_size; i++){
         		cout << h->Heap_array[i] << " Left(i)="<<h->Heap_array[Left(i)]<<", Right(i)="<<h->Heap_array[Right(i)]<<endl;
             }
@@ -106,8 +106,7 @@ class Heap {
 };
 
 
-int main (void)
-{
+int main () {
 	cout << "Heap in C++" << endl;
 	Heap<int> hp;
 	
