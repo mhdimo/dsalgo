@@ -147,69 +147,68 @@ class BST {
             return max(LeftHeight, RightHeight) +1;
         }
 
-        public:
+    public:
 
-            BST(){ root = NULL; }
-            ~BST(){ root = MakeEmpty(root); }
+        BST(){ root = NULL; }
+        ~BST(){ root = MakeEmpty(root); }
 
-            void Insert(int x) {
-                root = Insert(x, root);
+        void Insert(int x) {
+            root = Insert(x, root);
+        }
+
+        void Remove(int x) {
+            root = Remove(x, root);
+        }     
+
+        int Height(){
+            return Height(root);
+            cout << endl;
+        }      
+
+        void InOrder() {
+            InOrder(root);
+            cout << endl;
+        }
+
+        void PostOrder() {
+            PostOrder(root);
+            cout << endl;
+        }
+
+        void PreOrder() {
+            PreOrder(root);
+            cout << endl;
+        }
+
+        void Display() {
+            Display(root);
+            cout << endl;
+        }
+
+        T Max() {
+            Node<T>* maxNode = FindMax(root);
+            if (maxNode != nullptr) {
+                return maxNode->data;
             }
+            return T();  // Restituisce un valore di default se l'albero è vuoto
+        }
 
-            void Remove(int x) {
-                root = Remove(x, root);
-            }     
-
-            int Height(){
-                return Height(root);
-                cout << endl;
-            }      
-
-            void InOrder() {
-                InOrder(root);
-                cout << endl;
+        T Min() {
+            Node<T>* minNode = FindMin(root);
+            if (minNode != nullptr) {
+                return minNode->data;
             }
+            return T();  // Restituisce un valore di default se l'albero è vuoto
+        }
 
-            void PostOrder() {
-                PostOrder(root);
-                cout << endl;
+        T Search(T x) {
+            Node<T>* foundNode = Find(root, x);
+            if (foundNode != NULL) {
+                return foundNode->data;  // Restituisce il valore del nodo trovato
             }
-
-            void PreOrder() {
-                PreOrder(root);
-                cout << endl;
-            }
-
-            void Display() {
-                Display(root);
-                cout << endl;
-            }
-
-            T Max() {
-                Node<T>* maxNode = FindMax(root);
-                if (maxNode != nullptr) {
-                    return maxNode->data;
-                }
-                return T();  // Restituisce un valore di default se l'albero è vuoto
-            }
-
-            T Min() {
-                Node<T>* minNode = FindMin(root);
-                if (minNode != nullptr) {
-                    return minNode->data;
-                }
-                return T();  // Restituisce un valore di default se l'albero è vuoto
-            }
-
-            T Search(T x) {
-                Node<T>* foundNode = Find(root, x);
-                if (foundNode != NULL) {
-                    return foundNode->data;  // Restituisce il valore del nodo trovato
-                }
-                return T();  // Restituisce un valore di default se l'elemento non è presente
-            }
-
-
+            return T();  // Restituisce un valore di default se l'elemento non è presente
+        }
+        
 };
 
 
