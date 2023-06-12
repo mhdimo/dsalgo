@@ -63,21 +63,32 @@ class BST {
 
         Node<T>* Remove(T x, Node<T>* t){
             Node<T>* temp;
-            if (t == NULL){
+            if (t == NULL) {
+                // Caso 1: Il nodo da cancellare non esiste (l'albero o il sottoalbero è vuoto)
                 return NULL;
-            }else if(x < t->data){
+            } else if(x < t->data) {
+                // Caso 2: Il valore da cancellare è minore del valore del nodo corrente
+                // => Cerca nel sottoalbero sinistro
                 t->left = Remove(x, t->left);
-            }else if(x > t->data){
+            } else if(x > t->data) {
+                // Caso 2: Il valore da cancellare è maggiore del valore del nodo corrente
+                // => Cerca nel sottoalbero destro
                 t->right = Remove(x, t->right);
-            }else if(t->left && t->right){
+            } else if(t->left && t->right) {
+                // Caso 3: Il nodo da cancellare ha sia un sottoalbero sinistro che destro
+                // => Cerca il valore minimo nel sottoalbero destro e sostituisci il valore del nodo corrente
                 temp = FindMin(t->right);
                 t->data = temp->data;
                 t->right = Remove(t->data, t->right);
-            }else{
+            } else {
                 temp = t;
-                if(t->left == NULL){
+                if(t->left == NULL) {
+                    // Caso 2: Il nodo da cancellare ha solo un figlio destro
+                    // => Sostituisci il nodo corrente con il suo figlio destro
                     t = t->right;
-                }else if(t-> right == NULL){
+                } else if(t->right == NULL) {
+                    // Caso 2: Il nodo da cancellare ha solo un figlio sinistro
+                    // => Sostituisci il nodo corrente con il suo figlio sinistro
                     t = t->left;
                 }
                 delete temp;
@@ -87,9 +98,9 @@ class BST {
         }
 
         Node<T>* Find(Node<T>* t, int x) {
-            while (t != NULL) {
-                if (x < t->data) {
-                    t = t->left;
+            while (t != NULL) { //o(n)
+                if (x < t->data) { // o(1)
+                    t = t->left; //o(1)
                 } else if (x > t->data) {
                     t = t->right;
                 } else {
@@ -221,6 +232,8 @@ int main() {
     t.Insert(15);
     t.Insert(10);
     t.Insert(30);
+    t.Display();
+    cout<<endl;
 
     cout<<"PreOrder:"<<endl;
     t.PreOrder();
@@ -229,12 +242,15 @@ int main() {
     cout<<"Inorder:"<<endl;
     t.InOrder();
 
-    cout<<"\nAdd more data and do Find and deletion:";
+    cout<<"\nAdd more data and do Find and deletion:\n";
     t.Insert(23);
     t.Insert(54);
     t.Insert(22);
     t.Insert(67);
     t.Insert(45);
+    t.Display();
+    cout<<endl;
+
 
     cout<<"\nDelete 67:\n";
     t.Remove(67);
