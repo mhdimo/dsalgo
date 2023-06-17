@@ -163,11 +163,11 @@ class BST {
         BST(){ root = NULL; }
         ~BST(){ root = MakeEmpty(root); }
 
-        void Insert(int x) {
+        void Insert(T x) {
             root = Insert(x, root);
         }
 
-        void Remove(int x) {
+        void Remove(T x) {
             root = Remove(x, root);
         }     
 
