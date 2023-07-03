@@ -97,7 +97,7 @@ class BST {
             return t;
         }
 
-        Node<T>* Find(Node<T>* t, int x) {
+        Node<T>* Find(Node<T>* t, T x) {
             while (t != NULL) { //o(n)
                 if (x < t->data) { // o(1)
                     t = t->left; //o(1)
