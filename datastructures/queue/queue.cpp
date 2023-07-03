@@ -25,7 +25,7 @@ class Stack {
         Stack():Head(NULL),Tail(NULL){}
 
         //function for inserting element at the head of the list.
-        void push_back(Q value){
+        void Enqueue(Q value){
             //start with making a new node.
             Node<Q>* new_node = new Node<Q>(value);
 
@@ -39,10 +39,10 @@ class Stack {
         }
 
         //function for removing the last element inserted at the head
-        Q Dequeue(){
+        void Dequeue(){
             if (this->Head == NULL && this->Tail == NULL){ // check if stack is empty
                 cerr<<"Dequeue(): stack is empty.\n";
-                return -1;
+                return;
             }
             //PopValue gets the data of the head so we can return it
             Q DequeueValue= this->Head->data;
@@ -54,7 +54,7 @@ class Stack {
             }
             delete tmp;
 
-            return DequeueValue;
+            return;
         }
 
         //Function for removing a specific value from the stack.
@@ -134,26 +134,21 @@ int main(){
 
     Stack<int> S;
     //Inserting elements
-    S.push_back(6);
-    S.push_back(9);
-    S.push_back(1);
-    S.push_back(3);
-    S.push_back(7);
+    S.Enqueue(6);
+    S.Enqueue(9);
+    S.Enqueue(1);
+    S.Enqueue(3);
+    S.Enqueue(7);
     //using void display()
     cout<<"Current Queue before reverse: \n";
     S.display();
     cout<<"\nAdd element 10 at the front: \n";
-    S.push_back(10);
+    S.Enqueue(10);
     S.display();
     S.reverse();
     cout<<"\nReversed Linked Queue: \n";
     S.display();
     S.remove(10);
     cout<<"\nRemoving 10 from Queue: \n";
-    S.display();
-    cout<<"\nPop(): ";
-    int sdequeue;
-    sdequeue = S.Dequeue();
-    cout<<sdequeue<<"\n";
     S.display();
 }
