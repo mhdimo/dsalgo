@@ -118,11 +118,10 @@ class Stack {
             Node<S>* iter = this->Head;
 
             while (iter){
-                Node<S>* tmp = iter->Next;
-                delete iter;
-                iter = tmp;
+                Node<S>* tmp = iter;
+                iter = iter->Next;
+                delete tmp;
             }
-            
         }
 };
 
