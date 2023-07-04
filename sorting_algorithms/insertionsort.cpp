@@ -2,7 +2,8 @@
 
 using namespace std;
 
-void printarray(int a[], int b){
+template<typename T>
+void printarray(T a[], T b){
     for(int i = 0; i < b; i++){
         cout<<a[i]<<" ";
     }

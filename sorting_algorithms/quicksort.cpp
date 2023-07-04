@@ -1,22 +1,27 @@
 #include<iostream>
+
 using namespace std;
-void printarray(int a[], int n){
+
+template <typename T>
+void printarray(T a[], T n){
     for (int i = 0; i < n; i++){
         cout<< a[i] << " ";
     }
     cout<<endl;
 }
 
-void swap(int& a, int& b){
-    int aux = a;
+template <typename T>
+void Swap(T& a, T& b){
+    T aux = a;
     a = b;
     b = aux;
 }
 
-void quicksort(int a[],int sx, int dx){
-    int i = sx;
-    int j = dx;
-    int pivot = a[(sx+dx)/2];
+template <typename T>
+void quicksort(T a[],T sx, T dx){
+    T i = sx;
+    T j = dx;
+    T pivot = a[(sx+dx)/2];
     cout<<"lx: "<< i <<"\trx: "<< j <<"\tp: "<<pivot<< endl;
     printarray(a,10);
 
@@ -26,7 +31,7 @@ void quicksort(int a[],int sx, int dx){
         while (a[j] > pivot) j--;
 
         if (i <= j){
-            swap(a[i], a[j]);
+            Swap(a[i], a[j]);
             i++,j--;
             printarray(a,10);
         }
@@ -39,7 +44,8 @@ void quicksort(int a[],int sx, int dx){
     if (i < dx) quicksort(a,i,dx);
 }
 
-void quicksort (int a[], int n){
+template<typename T>
+void quicksort (T a[], T n){
     quicksort(a,0,n-1);
 }
 

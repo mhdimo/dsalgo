@@ -2,20 +2,22 @@
 
 using namespace std;
 
-void printarray(int a[],int b){
+template<typename T>
+void printarray(T a[],T b){
     for (int i = 0; i < b; i++){
         cout<<a[i]<<" ";
     }
     cout<<endl;
 }
 
-void merge(int left[],int right[], int a[],int b,int middle){
-    int leftsize = middle;
-    int rightsize = b-middle;
+template<typename T>
+void merge(T left[],T right[], T a[],T b,T middle){
+    T leftsize = middle;
+    T rightsize = b-middle;
 
-    int i = 0;
-    int l = 0;
-    int r = 0;
+    T i = 0;
+    T l = 0;
+    T r = 0;
 
     //check the condition of merge;
     while (l < leftsize && r < rightsize){
@@ -42,29 +44,30 @@ void merge(int left[],int right[], int a[],int b,int middle){
     
 }
 
-void mergesort(int a[],int b){
-    if (b <= 1) return;
+    template <typename T>
+    void mergesort(T a[],T b){
+        if (b <= 1) return;
 
-    int middle = b/2;
-    int leftarray[middle];
-    int rightarray[b-middle];
-    
-    int i = 0; //leftarr
-    int j = 0; //rightarr
+        T middle = b/2;
+        T leftarray[middle];
+        T rightarray[b-middle];
 
-    for (int i = 0; i < b; i++){
-        if (i<middle){
-            leftarray[i] = a[i];
-        } else {
-            rightarray[j] = a[i];
-            j++;
+        T i = 0; //leftarr
+        T j = 0; //rightarr
+
+        for (int i = 0; i < b; i++){
+            if (i<middle){
+                leftarray[i] = a[i];
+            } else {
+                rightarray[j] = a[i];
+                j++;
+            }
         }
-    }
-    mergesort(leftarray,middle);
-    mergesort(rightarray,b-middle);
+        mergesort(leftarray,middle);
+        mergesort(rightarray,b-middle);
 
-    merge(leftarray,rightarray,a,b,middle);
-}
+        merge(leftarray,rightarray,a,b,middle);
+    }
 
 int main(){
     int a[8] = {3,7,8,5,4,2,6,1};

@@ -2,23 +2,25 @@
 
 using namespace std;
 
-void printarr(int a[], int b){
+template<typename T>
+void printarr(T a[], T b){
     for (int i = 0; i < b; i++){
         cout<<a[i]<<" ";
     }
     cout<<endl;
 }   
 
-void swap(int& a, int& b){
-    int aux = a;
+template<typename T>
+void Swap(T& a, T& b){
+    T aux = a;
     a = b;
     b = aux;
 }
 
-void selectionsort(int a[], int b){
-    
+template<typename T>
+void selectionsort(T a[], T b){
     for(int i = 0; i < b-1; i++){
-        int _min = i;
+        T _min = i;
         for (int k = i+1; k < b; k++){
             if(a[k] < a[_min]){
                 _min = k;
@@ -26,7 +28,7 @@ void selectionsort(int a[], int b){
             }
         }
         if(_min != i){
-            swap(a[i],a[_min]);
+            Swap(a[i],a[_min]);
         }
     }
 }

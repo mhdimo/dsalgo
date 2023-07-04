@@ -2,15 +2,17 @@
 
 using namespace std;
 
-void printarr(int a[],int b){
+template<typename T>
+void printarr(T a[],T b){
     for (int i = 0; i < b; i++){
         cout<<a[i]<<" ";
     }
     cout<<endl;
 }
 
-int findmax(int a[], int b){
-    int max = a[0];
+template<typename T>
+T findmax(T a[], T b){
+    T max = a[0];
     for (int i = 0; i < b; i++){
         if(max < a[i]){
             max = a[i];
@@ -19,23 +21,24 @@ int findmax(int a[], int b){
     return max;
 }
 
-void countingsort(int a[], int b){
-    int max = findmax(a,b);
-    int count[max+1] = {0};
+    template<typename T>
+    void countingsort(T a[], T b){
+        T max = findmax(a,b);
+        T* count = new T[max+1]{0};
 
-    for (int i = 0; i < b; i++) {
-        count[a[i]]++;
-    }
+        for (int i = 0; i < b; i++) {
+            count[a[i]]++;
+        }
 
-    int index = 0;
+        T index = 0;
 
-    for (int i = 0; i < max+1; i++) {
-        while (count[i] > 0) {
-            a[index++] = i;
-            count[i]--;
+        for (int i = 0; i < max+1; i++) {
+            while (count[i] > 0) {
+                a[index++] = i;
+                count[i]--;
+            }
         }
     }
-}
 
 int main(){
     
