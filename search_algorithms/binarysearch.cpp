@@ -8,6 +8,7 @@ void printarray(T arr[],T b){
     for(int i = 0; i < b; i++){
         cout<<arr[i]<<" ";
     }
+    return;
 }
 
 template<typename T>
