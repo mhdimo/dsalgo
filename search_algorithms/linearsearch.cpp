@@ -1,13 +1,17 @@
 #include <iostream>
 using namespace std;
 
-void printarray(int arr[], int n){
+template<typename T>
+void printarray(T arr[], T n){
     for (int i = 0; i < n; i++){
         cout<<arr[i]<<" ";
     }
+
+    return;
 }
 
-bool linearsearch(int array[], int n, int key){
+template<typename T>
+bool linearsearch(T array[], T n, T key){
     for (int i = 0; i < n; i++){
         if (array[i] == key){
             return true;
