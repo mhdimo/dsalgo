@@ -121,11 +121,10 @@ class Stack {
             Node<Q>* iter = this->Head;
 
             while (iter){
-                Node<Q>* tmp = iter->Next;
-                delete iter;
-                iter = tmp;
+                Node<Q>* tmp = iter;
+                iter = iter->Next;
+                delete tmp;
             }
-            
         }
 };
 
@@ -151,4 +150,5 @@ int main(){
     S.remove(10);
     cout<<"\nRemoving 10 from Queue: \n";
     S.display();
+    S.IsEmpty();
 }
