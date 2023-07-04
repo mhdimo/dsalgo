@@ -1,22 +1,25 @@
+#include <cstdlib>
 #include<iostream>
 
 using namespace std;
 
-void printarray(int arr[],int b){
+template<typename T>
+void printarray(T arr[],T b){
     for(int i = 0; i < b; i++){
         cout<<arr[i]<<" ";
     }
 }
 
-int binarysearch(int arr[], int lowest, int highest, int key){
-    int central;
-    int centralvalue;
+template<typename T>
+bool binarysearch(T arr[], T lowest, T highest, T key){
+    T central;
+    T centralvalue;
     while (lowest <= highest){
         central = (lowest + highest) / 2;
         centralvalue = arr[central];
 
         if (key == centralvalue){
-            return central;
+            return true;
         }
 
         else if (key < centralvalue){
@@ -27,7 +30,7 @@ int binarysearch(int arr[], int lowest, int highest, int key){
         }
     }
 
-    return -1;
+    return false;
 }
 
 
@@ -41,11 +44,12 @@ int main(){
     cout<<"Insert the number you want to search for: ";
     cin>>key;
 
-    int x = binarysearch(arr, 0, 10, 3);
-
-    if(x >= 0){
+    bool x = binarysearch(arr, 0, 10, key);
+    if(x == true){
         cout<<"the number has been found: "<<key<<endl; 
+        exit(EXIT_SUCCESS);
     }else{
-        cout<<" Number not found";
+        cerr<<" Number not found";
+        exit(EXIT_FAILURE);
     }
 }
